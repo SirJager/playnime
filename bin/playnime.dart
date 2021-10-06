@@ -5,6 +5,7 @@ import 'package:faker/faker.dart';
 import 'package:playnime/playnime.dart';
 
 void main() async {
+  //!hello
   var faker = Faker();
   final useragent = faker.internet.userAgent();
   print(yellow("Enter Anime Name :"));
