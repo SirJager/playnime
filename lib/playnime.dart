@@ -5,6 +5,7 @@ import 'package:html/dom.dart' as dom;
 import 'package:html/parser.dart';
 import 'package:http/http.dart' as http;
 import 'package:ansicolor/ansicolor.dart';
+import 'package:process_run/shell_run.dart';
 
 AnsiPen red = new AnsiPen()..red(bold: true);
 AnsiPen green = new AnsiPen()..green(bold: true);
@@ -12,6 +13,7 @@ AnsiPen yellow = new AnsiPen()..yellow(bold: true);
 AnsiPen blue = new AnsiPen()..blue(bold: true);
 AnsiPen magenta = new AnsiPen()..magenta(bold: true);
 AnsiPen cyan = new AnsiPen()..cyan(bold: true);
+var shell = Shell();
 
 Future<String?> makeRequest(String url, String useragent, error) async {
   //! #1
@@ -246,8 +248,16 @@ Future<bool> tryPlay(List<Video> videos, Anime choiceAnime, String episodeNo,
       print(magenta("Anime : " + choiceAnime.animename));
       print(magenta("Episode : " + episodeNo));
       print(magenta("Quality : " + qualitychoice.toString()));
-      var output =
-          await Process.run("mpv", [vid.url]).then((result) => result.exitCode);
+      print(magenta("Link : " + vid.url));
+      var output;
+      if (Platform.isLinux) {
+        output = await Process.run("mpv", [vid.url])
+            .then((result) => result.exitCode);
+      } else if (Platform.isWindows) {
+        print(red("\nWINDOWS FEATURE IS NOT YET FULLY IMPLEMENTED"));
+        print(green("\nCOPY THE LINK BELOW\AND PLAY VIDEO WITH VLC"));
+        print(yellow("\n" + vid.url));
+      }
       if (output == 2) {
         faillist.add(vid.url);
         print(red("FAILED FOR ${qualitychoice.toString()}"));

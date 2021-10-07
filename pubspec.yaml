@@ -16,3 +16,4 @@ dependencies:
   faker: ^2.0.0
   html: ^0.15.0
   http: ^0.13.4
+  process_run: ^0.12.2+1
