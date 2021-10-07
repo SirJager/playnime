@@ -246,7 +246,6 @@ Future<bool> tryPlay(List<Video> videos, Anime choiceAnime, String episodeNo,
       print(magenta("Anime : " + choiceAnime.animename));
       print(magenta("Episode : " + episodeNo));
       print(magenta("Quality : " + qualitychoice.toString()));
-      print(magenta("Link : " + vid.url));
       var output =
           await Process.run("mpv", [vid.url]).then((result) => result.exitCode);
       if (output == 2) {
