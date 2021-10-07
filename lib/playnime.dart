@@ -263,24 +263,6 @@ Future<bool> tryPlay(List<Video> videos, Anime choiceAnime, String episodeNo,
   return value;
 }
 
-// Future userDecision() async {
-//   print(yellow("\nWHAT DO YOU WANT TO DO NOW ?\n"));
-//   print(green("[ 0 ] : CHANGE EPISODE"));
-//   print(red("[ 1 ] : CHANGE ANIME"));
-//   print(red("[ 2 ] : EXIT"));
-//   var choice = await getChoice(min: 0, max: 2);
-//   if (choice == 0) {
-//     // await getEpisode();
-//   } else if (choice == 1) {
-//     // await getAnime();
-//   } else if (choice == 2) {
-//     exit(0);
-//   } else {
-//     print(red("\nINVALID CHOICE\nEXITING"));
-//     exit(0);
-//   }
-// }
-
 class Private {
   static final String search = "https://gogoanime.vc/search.html?keyword=";
   static final String site = "https://gogoanime.vc";
